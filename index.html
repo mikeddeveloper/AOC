@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abraham Oyedele - Literary Works</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0a2e1d;
+            --secondary-color: #c9a227;
+            --accent-color: #2e8b57;
+            --light-color: #f8f9fa;
+            --dark-color: #121212;
+            --text-color: #333333;
+            --text-light: #6c757d;
+            --card-bg: #ffffff;
+            --section-bg: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: #ffffff;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-color) !important;
+            margin: 0 0.5rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(10, 46, 29, 0.9) 0%, rgba(18, 18, 18, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 180px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c9a227' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .author-name {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .author-tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .section-padding {
+            padding: 5rem 0;
+        }
+        
+        .bg-section {
+            background-color: var(--section-bg);
+        }
+        
+        .book-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: var(--card-bg);
+        }
+        
+        .book-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .book-cover {
+            height: 320px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.6s ease;
+        }
+        
+        .book-card:hover .book-cover {
+            transform: scale(1.08);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border: none;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 139, 87, 0.4);
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--secondary-color), #e6b800);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(201, 162, 39, 0.4);
+            color: white;
+        }
+        
+        .btn-outline-light {
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            color: white;
+            padding: 10px 26px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .author {
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .genre-badge {
+            background-color: rgba(201, 162, 39, 0.1);
+            color: var(--secondary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .rating {
+            color: #f39c12;
+        }
+        
+        .book-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .featured-book {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .purchase-options {
+            background-color: var(--light-color);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .purchase-btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 12px;
+            text-align: center;
+            border-radius: 8px;
+            padding: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .purchase-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .about-author {
+            background-color: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .author-photo {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.5s ease;
+        }
+        
+        .author-photo:hover {
+            transform: scale(1.02);
+        }
+        
+        .author-bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 5rem;
+            color: rgba(201, 162, 39, 0.2);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .newsletter-section {
+            background: linear-gradient(135deg, rgba(10, 46, 29, 0.9) 0%, rgba(18, 18, 18, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c9a227' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .form-control {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.2);
+            border-color: var(--accent-color);
+        }
+        
+        .floating-label {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .floating-label label {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            color: var(--text-light);
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background-color: white;
+            padding: 0 5px;
+        }
+        
+        .floating-label input:focus + label,
+        .floating-label textarea:focus + label,
+        .floating-label input:not(:placeholder-shown) + label,
+        .floating-label textarea:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(10, 46, 29, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(10, 46, 29, 0.4);
+            color: white;
+        }
+        
+        .book-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .book-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .book-synopsis {
+            background-color: rgba(10, 46, 29, 0.03);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .book-synopsis h5 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .author-name {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section {
+                padding: 120px 0 80px;
+            }
+            
+            .section-padding {
+                padding: 3rem 0;
+            }
+            
+            .book-meta {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-book-open me-2"></i>Abraham Oyedele
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#featured">Featured</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#books">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="author-name">Abraham Oyedele</h1>
+                <p class="author-tagline">Award-winning author and storyteller</p>
+                <p class="lead mb-4">Exploring the human experience through compelling narratives and unforgettable characters</p>
+                <a href="#books" class="btn btn-gold btn-lg me-3">Explore Books</a>
+                <a href="#about" class="btn btn-outline-light btn-lg">About the Author</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Author Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About the Author</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4" data-aos="fade-right" data-aos-delay="200">
+                    <img src="ab.jpg" 
+                         alt="Abraham Oyedele" class="author-photo">
+                </div>
+                <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
+                    <div class="about-author">
+                        <h3>Abraham Oyedele</h3>
+                        <p class="author-bio">
+                            Abraham Oyedele is a called minister of the gospel whose pastoral assignments in praying, counseling and deliverance spans the length and breadth of the home country Nigeria and extending to the west coast. His wealth of experience along this line has birthed two books "The Power of a Wombman" and "Youths in Their Time" amongst other projects developed for Television and film audience with the passion to get more of kingdom candidates involved in the art of character and career moulding.
+                        </p>
+                        <p class="author-bio">
+                            He is the producer and convener of a youth based Television programme, "Youth Engage" which primarily is about reorienting the youth for a better tomorrow.
+                        </p>
+                        <p class="author-bio">
+                            His company Abraham Oyedele Productions Limited has been involved in productions of TVCs, documentaries for notable establishments like Doyin Group and Olusegun Obasanjo Presidential library amongst others. An Alumnus of the Institute of Mass Communication Technology, Jos, Nigeria with mandate to bring sanity to as many homes through Christ inspired qualitative programmes both on pulpit and the screen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Book Section -->
+    <section id="featured" class="section-padding bg-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Featured Book</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+                    <div class="featured-book">
+                        <img src="cof.jpg" 
+                             alt="Chapters of Life" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left" data-aos-delay="400">
+                    <h3>Chapters of Life</h3>
+                    <p class="author">by Abraham Oyedele</p>
+                    <div class="rating mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="ms-2">4.7/5</span>
+                    </div>
+                    
+                    <div class="book-synopsis">
+                        <h5>Synopsis</h5>
+                        <p class="book-description">
+                            Mr. Aguda's patriotism came at a steep cost. Not only was he unceremoniously sacked, but the corrupt group he defied launched full-blown, vindictive attacks against him. This powerful narrative explores themes of integrity, resilience, and the personal cost of standing up for what is right in the face of systemic corruption.
+                        </p>
+                    </div>
+                    
+                    <div class="price mb-3">$16.99</div>
+                    <div class="purchase-options">
+                        <h5>Purchase Options:</h5>
+                        <a href="mailto:abraham.oyedele@example.com?subject=Purchase%20Chapters%20of%20Life&body=Hello%20Abraham,%20I%20would%20like%20to%20purchase%20'Chapters%20of%20Life'." 
+                           class="btn btn-primary purchase-btn">
+                            <i class="fas fa-envelope me-2"></i>Buy via Email
+                        </a>
+                        <a href="https://wa.me/1234567890?text=Hello%20Abraham,%20I%20would%20like%20to%20purchase%20'Chapters%20of%20Life'." 
+                           class="btn btn-success purchase-btn" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>Buy via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Section -->
+    <section id="books" class="section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Book Collection</h2>
+            <div class="row">
+                <!-- Book 1 -->
+                <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <div class="book-card card h-100">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-5">
+                                <img src="power.jpg" 
+                                     class="book-cover h-100 w-100" alt="Shadows of Yesterday" style="object-fit: cover;">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body d-flex flex-column h-100">
+                                    <h5 class="card-title">Power of a Wombman</h5>
+                                    <p class="author">by Abraham Oyedele</p>
+                                    <div class="rating mb-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <div class="genre-badges mb-2">
+                                        <span class="genre-badge">Historical Fiction</span>
+                                        <span class="genre-badge">Drama</span>
+                                    </div>
+                                    <p class="card-text book-description">
+                                        The roles of women, clearly spelt out right from creation till date cannot be swept off by both the creator and the created. It has been significantly proven that for a worthy cause to be carried out and successfully achieved, woman’s involvement is vital.
+                                    </p>
+                                    <div class="book-meta mt-auto">
+                                        <div class="price">$3.9</div>
+                                        <div class="book-actions">
+                                            <a href="https://wa.me/1234567890?text=Hello%20Abraham,%20I%20would%20like%20to%20purchase%20'Shadows%20of%20Yesterday'." 
+                                               class="btn btn-success" target="_blank">
+                                                <i class="fab fa-whatsapp me-2"></i>Buy Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Book 2 -->
+                <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="book-card card h-100">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-5">
+                                <img src="cof.jpg" 
+                                     class="book-cover h-100 w-100" alt="River of Dreams" style="object-fit: cover;">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body d-flex flex-column h-100">
+                                    <h5 class="card-title">Chapters of Life</h5>
+                                    <p class="author">by Abraham Oyedele</p>
+                                    <div class="rating mb-2">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="genre-badges mb-2">
+                                        <span class="genre-badge">Magical Realism</span>
+                                        <span class="genre-badge">African Literature</span>
+                                    </div>
+                                    <p class="card-text book-description">
+                                        Chapters of Life
+
+In the embrace of dawn, where dreams once spun,
+A family stood, their lives as one.
+Their days were bright, their hearts alight,
+But shadows crept in the dead of night.
+
+In a land where hope should blossom fair,
+Corruption's grip laid their spirits bare.
+A system flawed, so deeply steeped,
+In lies and greed, where darkness seeped.
+
+
+                                    </p>
+                                    <div class="book-meta mt-auto">
+                                        <div class="price">$9.5</div>
+                                        <div class="book-actions">
+                                            <a href="mailto:abraham.oyedele@example.com?subject=Purchase%20River%20of%20Dreams&body=Hello%20Abraham,%20I%20would%20like%20to%20purchase%20'River%20of%20Dreams'." 
+                                               class="btn btn-primary">
+                                                <i class="fas fa-envelope me-2"></i>Buy Now
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-padding bg-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">What Readers Say</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Abraham Oyedele has a gift for creating characters that feel like real people. I was completely immersed in the world of 'Chapters of Life' from the first page. His portrayal of Mr. Aguda's struggle against corruption was both heartbreaking and inspiring."
+                        </div>
+                        <div class="testimonial-author">- Chinwe Okafor, The Literary Review</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Oyedele's writing is both poetic and powerful. He captures the complexities of Nigerian society with nuance and compassion. 'River of Dreams' particularly stands out as a masterpiece that blends traditional storytelling with contemporary themes."
+                        </div>
+                        <div class="testimonial-author">- David Mitchell, Author</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "I've read all of Abraham Oyedele's books, and each one is better than the last. His ability to weave intricate plots with deep emotional resonance is remarkable. 'Shadows of Yesterday' moved me to tears with its authentic portrayal of friendship tested by circumstance."
+                        </div>
+                        <div class="testimonial-author">- Amina Jalloh, Reader</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container text-center">
+            <div data-aos="fade-up">
+                <h2 class="mb-4">Stay Updated</h2>
+                <p class="lead mb-4">Subscribe to Abraham's newsletter for updates on new releases, events, and exclusive content.</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form class="d-flex">
+                            <input type="email" class="form-control me-2" placeholder="Your email address">
+                            <button type="submit" class="btn btn-gold">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Contact Abraham</h2>
+            <div class="row">
+                <div class="col-md-8 mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card shadow border-0">
+                        <div class="card-body p-5">
+                            <form>
+                                <div class="floating-label mb-4">
+                                    <input type="text" class="form-control" id="name" placeholder=" " required>
+                                    <label for="name">Your Name</label>
+                                </div>
+                                <div class="floating-label mb-4">
+                                    <input type="email" class="form-control" id="email" placeholder=" " required>
+                                    <label for="email">Email Address</label>
+                                </div>
+                                <div class="floating-label mb-4">
+                                    <textarea class="form-control" id="message" rows="5" placeholder=" " required></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up">
+                    <h4>Abraham Oyedele</h4>
+                    <p>Acclaimed author exploring the depths of human experience through powerful storytelling.</p>
+                    <div class="social-links mt-4">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://web.facebook.com/abraham.oyedele/?_rdc=1&_rdr#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-light">Home</a></li>
+                        <li><a href="#about" class="text-light">About</a></li>
+                        <li><a href="#featured" class="text-light">Featured Book</a></li>
+                        <li><a href="#books" class="text-light">Book Collection</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <h5>Contact Info</h5>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
+                        <p><i class="fas fa-envelope"></i> abraham.oyedele@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +234 803 304 9547</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light my-4">
+            <div class="text-center py-3">
+                <p>&copy; 2025 Abraham Oyedele Collections. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            if (window.scrollY > 300) {
+                document.querySelector('.back-to-top').classList.add('active');
+            } else {
+                document.querySelector('.back-to-top').classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
